@@ -15,7 +15,7 @@ export interface UserProfile {
 declare global {
   namespace Express {
     interface Request {
-      user: UserDocument;
+      user: UserProfile;
       token: string;
     }
   }
