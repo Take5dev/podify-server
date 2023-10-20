@@ -278,11 +278,15 @@ export const getAutoPlaylists: RequestHandler = async (req, res) => {
     title: mixTitle,
   });
 
-  const finalPlaylists = autoPlaylists.concat({
-    id: mixPlaylist?._id,
-    title: mixPlaylist?.title,
-    count: mixPlaylist?.items.length,
-  });
+  let finalPlaylists;
+
+  if (mixPlaylist) {
+    finalPlaylists = autoPlaylists.concat({
+      id: mixPlaylist?._id,
+      title: mixPlaylist?.title,
+      count: mixPlaylist?.items.length,
+    });
+  }
 
   res.json({ playlists: finalPlaylists });
 };
