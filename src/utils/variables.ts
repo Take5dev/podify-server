@@ -2,8 +2,8 @@ const { env } = process as { env: { [key: string]: string } };
 
 export const {
   MONGODB_URL: DB_URL,
-  MAILTRAP_USER,
-  MAILTRAP_PASSWORD,
+  NODEMAILER_GMAIL_EMAIL,
+  NODEMAILER_GMAIL_PASSWORD,
   VERIFICATION_EMAIL,
   PASSWORD_RESET_LINK,
   SIGN_IN_URL,

@@ -1,8 +1,8 @@
 import { generateTemplate } from "@/mail/template";
 import emailVerificationToken from "@/models/emailVerificationToken";
 import {
-  MAILTRAP_PASSWORD,
-  MAILTRAP_USER,
+  NODEMAILER_GMAIL_EMAIL,
+  NODEMAILER_GMAIL_PASSWORD,
   SIGN_IN_URL,
   VERIFICATION_EMAIL,
 } from "@/utils/variables";
@@ -12,11 +12,10 @@ import path from "path";
 
 const generateMailTransporter = () => {
   return nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
+    service: "gmail",
     auth: {
-      user: MAILTRAP_USER,
-      pass: MAILTRAP_PASSWORD,
+      user: process.env.NODEMAILER_GMAIL_EMAIL,
+      pass: process.env.NODEMAILER_GMAIL_PASSWORD,
     },
   });
 };
