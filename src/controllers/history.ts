@@ -182,18 +182,8 @@ export const getRecent: RequestHandler = async (req, res) => {
     { $match: { owner: req.user._id } },
     {
       $project: {
-        myHistory: {
-          $slice: ["$all", (+page - 1) * +limit, +limit],
-        },
-      },
-    },
-    {
-      $project: {
         histories: {
-          $sortArray: {
-            input: "$myHistory",
-            sortBy: { date: -1 },
-          },
+          $slice: ["$all", (+page - 1) * +limit, +limit],
         },
       },
     },
@@ -201,6 +191,11 @@ export const getRecent: RequestHandler = async (req, res) => {
       $unwind: {
         path: "$histories",
         includeArrayIndex: "index",
+      },
+    },
+    {
+      $sort: {
+        "histories.date": -1,
       },
     },
     {
