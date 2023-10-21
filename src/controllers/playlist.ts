@@ -127,7 +127,7 @@ export const getPlaylistsByProfile: RequestHandler = async (req, res) => {
     return {
       id: playlist._id,
       title: playlist.title,
-      visiblity: playlist.visibility,
+      visibility: playlist.visibility,
       count: playlist.items.length,
     };
   });
